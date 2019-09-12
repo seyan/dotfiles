@@ -1,0 +1,40 @@
+[user]
+	name = Seiya Nakayama
+	email = seyaseyan@gmail.com
+[http]
+	sslVerify = false
+[alias]
+  st = status
+  co = checkout
+  c = commit -am
+  b = branch -a
+  up = pull
+  fp = fetch --prune
+  p = push
+  s = status -s -b
+  rpo = remote prune origin
+  df = diff --color --color-words --abbrev
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  bnm =  branch -a --no-merge
+  # Show the diff between the latest commit and the current state
+  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  # マージ済みのブランチを全部削除
+  dmb = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  #origin/masterを基準にした新しいブランチの作成
+  prbr = !git fetch origin master && git checkout -t origin/master -b
+
+[core]
+	excludesfile = /Users/nakayama/.global_ignore
+[merge "ours"]
+	driver = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[credential]
+	helper = osxkeychain
+[commit]
+	template = /Users/nakayama/.stCommitMsg
+
