@@ -1,9 +1,16 @@
 # dotfiles
 
-1. Macにbash-completionをインストールする
-bash-Completion とは、Bash の補完機能を拡張するシェルスクリプトの集まりです。
+1. git-prompt.shとgit-completion.bashの存在確認
+
+gitの補完を有効にするためにはgit-prompt.shとgit-completion.bashを有効にする必要がある。
 ```
-brew install bash-completion
+$ ls /usr/local/etc/bash_completion.d/
+git-completion.bash git-prompt.sh
+```
+存在しない場合は、Homebrewでgitをインストールすれば`/usr/local/etc/bash_completion.d/`
+の中にシンボリックリンクがおかれる
+```
+brew install git
 ```
 
 2. このリポジトリのdotfilesをカレントディレクトリに配置
